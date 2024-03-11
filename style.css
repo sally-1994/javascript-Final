@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); 
+
+
 .header-wraper {
     background-color:black;
     padding: 20px;
@@ -290,6 +293,61 @@ img {
     font-size: 32px;
     margin-bottom: 30px;
     text-decoration: none;
+}
+
+/*accordionis stili*/
+
+
+
+.accordion{ 
+    max-width: 33rem; 
+    width: 100%; 
+    background: #FFF; 
+    margin:0 1rem; 
+    padding: 1rem; 
+    border-radius: 0.5rem; 
+    box-shadow: 0 0 5px rgba(0,0,0,0.2); 
+} 
+.accordion .accordion-content{ 
+    margin:10px 0; 
+    border-radius: 5px; 
+    background-color: #e8ffdc; 
+    border-color: #bbffaa; 
+    overflow: hidden; 
+} 
+  
+.accordion-content.is-open{ 
+    padding-bottom: 10px; 
+} 
+.accordion-content header{ 
+    display:flex; 
+    min-height: 50px; 
+    padding: 0 15px; 
+    cursor: pointer; 
+    align-items: center; 
+    justify-content: space-between; 
+    transition:all 0.2s linear; 
+} 
+.accordion-content.is-open header{ 
+    min-height: 35px; 
+} 
+.accordion-content-title{ 
+    font-size: 1rem; 
+    font-weight: 600; 
+    color:#000000; 
+} 
+.accordion-content-description{ 
+    height:0; 
+    font-size: 13px; 
+    color:#000000; 
+    font-weight: 400; 
+    padding: 0 15px; 
+}
+.accor-1{
+    margin-left:300px;
+    margin-right: 300px;
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 
