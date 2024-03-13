@@ -4,10 +4,13 @@ const nav = document.getElementById('navBar');
 const burger = document.getElementById('burgerBar');
 
 
-burger.addEventListener('click', function(){
+ burger.addEventListener('click',function Burger(){
   nav.classList.toggle('activeNav');
-  burger.classList.toggle()
+ 
 });
+export function Burger() {
+  nav.classList.toggle('activeNav');
+}
 
 //slideris gaketeba//
 const dataSLider = [
@@ -87,7 +90,7 @@ function createDots() {
 
 // slideris funqcia
 function slide() {
-  sliderContent.innerHTML = " ";
+  sliderContent.innerHTML = "";
   const slideItemDiv = createDivTag();
   const slideItemImg = createImgTag(dataSLider[sliderIndex]);
   const slideItemTitle = createTitle(dataSLider[sliderIndex]);
@@ -249,13 +252,6 @@ function validationEmail() {
 
 
 
-//burgeri
-const burgerMenu = document.getElementById('burger-menu');
-const overlay = document.getElementById('menu');
 
-burgerMenu.addEventListener('click', function () {
-  this.classList.toggle('close');
-  overlay.classList.toggle("overlay")
-})
 
 

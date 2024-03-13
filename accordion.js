@@ -1,3 +1,7 @@
+import { Burger } from "./script";
+Burger();
+
+
 const accordionContent = document.querySelectorAll(".accordion-content"); 
   
 accordionContent.forEach((item,index)=>{ 
@@ -36,8 +40,6 @@ const overlay = document.getElementById('overlay');
 const postcontent = document.getElementById('content');
 const overlayclose = document.getElementById('close');
 
-
-
 function ajax(url,callback) {    
     fetch(url, {
         method: "GET",
@@ -54,9 +56,9 @@ function ajax(url,callback) {
     .catch((error)=> console.log(error))
 }
 
-ajax('https://status.digitalocean.com/api/v2/summary.json',function (data) {
+ajax('https://jsonplaceholder.typicode.com/posts',function (data) {
     data.forEach(element => {
-       //console.log(element);
+       console.log(element);
        post(element) 
     });
     
@@ -71,7 +73,7 @@ function post(item) {
     const posth1 = document.createElement('h1');
     posth1.innerText = item.id;
     const posth2 = document.createElement('h2');
-    posth2.innerText= item.name;
+    posth2.innerText= item.title;
     const deletebtn = document.createElement('button');
     deletebtn.textContent = "delete post";
 
@@ -84,7 +86,7 @@ function post(item) {
         console.log(e.target);
         const deleteId = e.target.getAttribute('data-id');
         console.log(deleteId);
-        const deleteUrl = `https://status.digitalocean.com/api/v2/summary.json/${deleteId}`
+        const deleteUrl = `https://jsonplaceholder.typicode.com/posts${deleteId}`
         console.log(deleteUrl);
 
         fetch(deleteUrl,{
@@ -100,9 +102,9 @@ function post(item) {
 
     divcontainer.addEventListener('click', function () {
         console.log(this);
-        const postid = this.getAttribute('data-id',);
+        const postid = this.getAttribute('data-id');
         overlay.classList.add('activoverlay');
-        const newUrlpost = `https://status.digitalocean.com/api/v2/summary.json${postid}`;
+        const newUrlpost = `https://jsonplaceholder.typicode.com/posts${postid}`;
         ajax(newUrlpost, function (elementNew) {
             console.log(elementNew);
             overlaiInfo(elementNew);
@@ -115,7 +117,7 @@ function post(item) {
 
 function overlaiInfo(item) {
     const pdesc = document.createElement('p');
-    pdesc.innerText = item.group_id;
+    pdesc.innerText = item.body;
 
     content.appendChild(pdesc);
     
@@ -126,6 +128,34 @@ overlayclose.addEventListener('click', function () {
     content.innerText = "";
     
 })
+
+
+
+form.addEventListener('submit',function (e) {
+    e.preventDefault();
+    console.log(e);
+    console.log(e.target[0].value);
+    let formDatasend = {
+        title:e.target[0].value
+        
+    }
+   console.log(formDatasend);
+   
+   
+   fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    body: JSON.stringify(formDatasend),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => response.json())
+    .then((sendedobj) => {
+      post(sendedobj)
+      
+      console.log(sendedobj);
+    });
+});
 
 
 
