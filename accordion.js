@@ -1,5 +1,4 @@
-import { Burger } from "./script";
-Burger();
+
 
 
 const accordionContent = document.querySelectorAll(".accordion-content"); 

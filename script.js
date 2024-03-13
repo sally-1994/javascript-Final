@@ -4,13 +4,11 @@ const nav = document.getElementById('navBar');
 const burger = document.getElementById('burgerBar');
 
 
- burger.addEventListener('click',function Burger(){
+ burger.addEventListener('click',function (){
   nav.classList.toggle('activeNav');
  
 });
-export function Burger() {
-  nav.classList.toggle('activeNav');
-}
+
 
 //slideris gaketeba//
 const dataSLider = [
