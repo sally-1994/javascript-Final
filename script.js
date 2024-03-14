@@ -1,5 +1,7 @@
 
 'use strict'
+
+
 import { dlt,loadToDos,saveToStorage,createToDo,handleClick ,ne} from "./input.js";
 dlt() 
 loadToDos()
@@ -147,7 +149,7 @@ setInterval(() => {
 
  
 //forma
-const formElement = document.getElementById("registration");
+const formElement = document.getElementById("resgitration");
 
 formElement.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -197,13 +199,17 @@ formElement.addEventListener("submit", function (event) {
     el.textContent = " ";
   });
 
-  // 
+  // შეცდომები
   for (let item in errors) {
-    console.log(item); 
+    console.log(item); //key: check, gender,passw,username
 
     let errorPelement = document.getElementById("error-" + item);
     console.log(errorPelement);
-    
+    // pbj key  = username
+    // <p id="error - username "></p>
+
+    //obj key = passw
+    // <p id="error - passw"></p>
 
     if (errorPelement) {
       errorPelement.textContent = errors[item];
@@ -217,24 +223,28 @@ formElement.addEventListener("submit", function (event) {
   console.log(errors);
 });
 
+// let errors = {
+// check: "You must agree our terms and conditions";
+// gender: "Please select Your Gender";
+// passw: "Password field can not empty";
+// username: "Username can not be empty";
+// }
 
 // show hide password
 let passwShow = document.getElementById("passwordfield");
 let icon = document.getElementById("showIcon");
 
- let showHidePassword = () => {
+icon.addEventListener("click", function () {
   if (passwShow.type == "password") {
     passwShow.setAttribute("type", "text");
-    icon.classList.remove("fa-eye-slash");
-    icon.classList.add("fa-eye");
-  } else {
-    passwShow.setAttribute("type", "password");
     icon.classList.remove("fa-eye");
     icon.classList.add("fa-eye-slash");
+  } else {
+    passwShow.setAttribute("type", "password");
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
   }
-};
-
- icon.addEventListener("click", showHidePassword);
+});
 
 // email validation - regex
 let email = document.getElementById("emailfield");
@@ -244,18 +254,22 @@ function validationEmail() {
   let textError = document.getElementById("emailError");
   let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  if (emailPattern.match(emailValue)) {
+  if (emailPattern.test(emailValue)) {
     textError.innerText = "Your Email is valid";
     textError.style.color = "green";
   } else {
     textError.innerText = "Your Email is Invalid";
-   textError.style.color = "red";
+    textError.style.color = "red";
   }
 
   if (emailValue == "") {
     textError.innerHTML = "";
   }
 }
+
+email.addEventListener("keyup", validationEmail);
+
+
 
 
 
