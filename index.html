@@ -109,12 +109,43 @@
       </div>
 
     </section>
+
+    <section>
+      <form action="" id="Login">
+        <div>
+          <input type="text" id="name" name="inputvalue"/>
+          <input type="checkbox" id="save"/>
+        </div>
+
+        <div>
+          <input type="password" name="inputpassw" id="passw"/>
+          <input type="checkbox" id="save"/>
+        </div>
+
+        <div>
+          <button>Submit</button>
+        </div>
+      </form>
+    </section>
+
+    <section style="margin-top: 100px">
+      <h2>To Do List</h2>
+      <div>
+        <input type="text" id="todoinput" />
+        <button id="btn-add">Add Task</button>
+      </div>
+      <ul id="todo"></ul>
+      <button id="clear all" >clear all</button>
+    </section>
+
     
 
     
 
 
   <script src="accordion.js"></script>    
+  
   <script type="module" src="script.js"></script>
+  <script src="./node_modules/js-cookie/dist/js.cookie.min.js"></script>
 </body>
 </html>

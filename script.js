@@ -1,4 +1,13 @@
+
 'use strict'
+import { dlt,loadToDos,saveToStorage,createToDo,handleClick ,ne} from "./input.js";
+dlt() 
+loadToDos()
+saveToStorage(todo)
+createToDo(text) 
+handleClick() 
+ne(e)
+
 //burgeri//
 const nav = document.getElementById('navBar');
 const burger = document.getElementById('burgerBar');
