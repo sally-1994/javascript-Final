@@ -11,14 +11,23 @@ handleClick()
 ne(e)
 
 //burgeri//
-const nav = document.getElementById('navBar');
-const burger = document.getElementById('burgerBar');
+$(document).ready(function() {
+  $('nav ul li a:not(:only-child)').click(function(e) {
+      $(this).siblings('.nav-dropdown').toggle();
+      e.stopPropagation();
+  });
 
-
- burger.addEventListener('click',function (){
-  nav.classList.toggle('activeNav');
- 
+  $('html').click(function(){
+      $('.nav-dropdown').hide();
+  })
+  $('#nav-toggle').click(function(){
+      $('nav ul').slideToggle();
+  })
+  $('#nav-toggle').on('click', function(){
+      this.classList.toggle('active');
+  });
 });
+
 
 
 //slideris gaketeba//
@@ -149,125 +158,144 @@ setInterval(() => {
 
  
 //forma
-const formElement = document.getElementById("resgitration");
+const validate = function(e) {
+  var fields = document.querySelectorAll('.form-container textarea, .form-container input[type="text"]');
+  var regEx;
+  var removeSpan;
+  var par;
+  var check = false;
+  var val;
+  var errArr = [];
 
-formElement.addEventListener("submit", function (event) {
-  event.preventDefault();
+  for (var i = 0; i < fields.length; i++) {
+      if (fields[i].value === "") {
+        
+          if (fields[i].nextElementSibling.classList.contains('error')) {
+            removeSpan = fields[i].nextElementSibling;
+            par = fields[i].parentNode;
+            par.removeChild(removeSpan);
+            fields[i].nextElementSibling.innerHTML = "Hmmm! " + fields[i].placeholder + " is required?";
+            fields[i].style.boxShadow = "0 0 2px 1px #cc0001";
+            check = false;
+            errArr.push(fields[i]);
+          }
+          fields[i].nextElementSibling.innerHTML = "Hmmm! " + fields[i].placeholder + " is required?";
+          fields[i].style.boxShadow = "0 0 2px 1px #cc0001";
+          check = false;
+          errArr.push(fields[i]);
+      } else {
 
-  const errors = {};
+          // check if message and name values contain valid characters.
+          if (fields[i].id !== 'email' && fields[i].id !== 'phone') {
+              val = isValidChar(fields[i]);
+              if(val === false) {
+                fields[i].nextElementSibling.innerHTML = "Are you trying to HACK ME!";
+                fields[i].style.boxShadow = "0 0 2px 1px #cc0001";
+                check = false;
+                errArr.push(fields[i]);
+              } else {
+                fields[i].nextElementSibling.innerHTML = "";
+                fields[i].style.boxShadow = "none";
+                check = true;
+              }
+          }
+        
+          if(fields[i].id === 'phone') {
+            val = isValidPhone(fields[i]);
+            if(val === false) {
+              fields[i].nextElementSibling.innerHTML = "Hmmm! Your phone number is not valid?";
+              fields[i].style.boxShadow = "0 0 2px 1px #cc0001";
+              check = false;
+              errArr.push(fields[i]);
+            } else {
+              fields[i].nextElementSibling.innerHTML = "";
+              fields[i].style.boxShadow = "none";
+              check = true;  
+            }
+          }
 
-  //username
-  let usernameValue = document.getElementById("usernamefield").value;
-
-  if (usernameValue == "") {
-    errors.username = "Username can not be empty";
+          if (fields[i].id === 'email') {
+              val = isValidEmail(fields[i]);
+              if(val === false) {
+                  fields[i].nextElementSibling.innerHTML = "Hmmm! Your email address is not valid?";
+                  fields[i].style.boxShadow = "0 0 2px 1px #cc0001";
+                  check = false;
+                  errArr.push(fields[i]);
+              } else {
+                  fields[i].nextElementSibling.innerHTML = "";
+                  fields[i].style.boxShadow = "none";
+                  check = true;
+              }
+          }
+      }
   }
 
-  // password
-  let passwValue = document.getElementById("passwordfield").value;
-  let passw2Value = document.getElementById("passwordfield2").value;
+  if(check === false) {
+    var count = 0;
+    var toErr = setInterval(function() {
+      var e = errArr[0].offsetTop + -25;
+      var pos = Math.abs(e);
+      if(count < pos) {
+        count ++;
+        window.scrollTo(0, count);
+      } else {
+        clearInterval(toErr);
+      }
+    }, 1);
+  }
+  
+  return check
 
-  if (passwValue == "") {
-    errors.passw = "Password field can not empty";
+  // Helper functions.
+  function isValidEmail(e) {
+      regEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      var email = e.value;
+      if (!regEx.test(email)) {
+          return false;
+      }
   }
 
-  if (passwValue != passw2Value) {
-    errors.passw2 = "Passwords do not match";
+  function isValidChar(e) {
+      regEx = /^[a-zA-Z@#$%!?^&*()_+\-=\[\]{};':"\\|,.\/? ]*$/;
+      var value = e.value;
+      if (!regEx.test(value)) {
+          return false;
+      }
   }
 
-  // radio
-  let gender = false;
-
-  formElement.querySelectorAll('[name = "gender"]').forEach((item) => {
-    if (item.checked) {
-      gender = true;
+  function isValidPhone(e) {
+    regEx = /^[+]?[(]?[+]?\d{2,4}[)]?[-\s]?\d{2,8}[-\s]?\d{2,8}$/;
+    var value = e.value;
+    if(!regEx.test(value)) {
+      return false;
     }
-  });
-
-  if (!gender) {
-    errors.gender = "Please select Your Gender";
   }
+};
 
-  //checkbox
-  let checkInput = document.getElementById("agree").checked;
 
-  if (!checkInput) {
-    errors.check = "You must agree our terms and conditions";
-  }
-
-  formElement.querySelectorAll(".error-text").forEach((el) => {
-    el.textContent = " ";
-  });
-
-  // შეცდომები
-  for (let item in errors) {
-    console.log(item); //key: check, gender,passw,username
-
-    let errorPelement = document.getElementById("error-" + item);
-    console.log(errorPelement);
-    // pbj key  = username
-    // <p id="error - username "></p>
-
-    //obj key = passw
-    // <p id="error - passw"></p>
-
-    if (errorPelement) {
-      errorPelement.textContent = errors[item];
-    }
-  }
-
-  if (Object.keys(errors).length == 0) {
-    formElement.submit();
-  }
-
-  console.log(errors);
+//navb
+$(document).ready(function() {
+$('nav ul li a:not(:only-child)').click(function(e) {
+    $(this).siblings('.nav-dropdown').toggle();
+    e.stopPropagation();
 });
 
-// let errors = {
-// check: "You must agree our terms and conditions";
-// gender: "Please select Your Gender";
-// passw: "Password field can not empty";
-// username: "Username can not be empty";
-// }
-
-// show hide password
-let passwShow = document.getElementById("passwordfield");
-let icon = document.getElementById("showIcon");
-
-icon.addEventListener("click", function () {
-  if (passwShow.type == "password") {
-    passwShow.setAttribute("type", "text");
-    icon.classList.remove("fa-eye");
-    icon.classList.add("fa-eye-slash");
-  } else {
-    passwShow.setAttribute("type", "password");
-    icon.classList.remove("fa-eye-slash");
-    icon.classList.add("fa-eye");
-  }
+$('html').click(function(){
+    $('.nav-dropdown').hide();
+})
+$('#nav-toggle').click(function(){
+    $('nav ul').slideToggle();
+})
+$('#nav-toggle').on('click', function(){
+    this.classList.toggle('active');
+});
 });
 
-// email validation - regex
-let email = document.getElementById("emailfield");
 
-function validationEmail() {
-  let emailValue = document.getElementById("emailfield").value;
-  let textError = document.getElementById("emailError");
-  let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  if (emailPattern.test(emailValue)) {
-    textError.innerText = "Your Email is valid";
-    textError.style.color = "green";
-  } else {
-    textError.innerText = "Your Email is Invalid";
-    textError.style.color = "red";
-  }
 
-  if (emailValue == "") {
-    textError.innerHTML = "";
-  }
-}
 
-email.addEventListener("keyup", validationEmail);
+
 
 
 
