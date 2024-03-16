@@ -165,11 +165,8 @@
     }
   }
 
-.slide {
-    width: 1440;
-    height: 720;
-    object-fit: cover;
-}
+
+
 
 
 
@@ -347,11 +344,22 @@ img {
 
 /*postebis stili*/
 .post {
-    background-color: aqua;
-    margin-bottom: 25px;
-    width: 500px;
-    padding: 30px;
+    background-color:lavender;
+    margin-bottom: 10px;
+    width: 300px;
+    padding: 30px;;
+    border-radius: 4px;
+
 }
+
+.post-wraper{
+    display: flex;
+    flex-direction: column;
+    
+    text-align: center;
+    justify-content: center;
+}
+
 .overlay{
     position: fixed;
     top: 0;
@@ -383,6 +391,52 @@ img {
     display: none;
 
 }
+
+/*todo*/
+.todostyle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    
+    position: relative;
+    padding:  40px;
+    list-style-type: none;
+    
+}
+
+/*submitcookie*/
+.imgFORM{
+    width: 1440;
+    height: 500;
+    display: flex;
+    flex-direction: row;
+    background-color: lavenderblush;
+    align-items: center;
+    justify-content: space-around;
+       
+}
+
+.imgdiv{
+    width: 500px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+.FORM{
+    width: 624;
+    height: 300px;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+  
 
 
 

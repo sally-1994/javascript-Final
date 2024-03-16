@@ -1,7 +1,7 @@
 'use strict'
 
 
-export function ne(e){};
+
 
 const form2 = document.getElementById('Login');
 
@@ -29,17 +29,17 @@ form2.addEventListener('submit',function ne (e) {
 })
 
 
-//let savedUsername =Cookies.get('saved-name')
-//if (savedUsername) {
+let savedUsername =Cookies.get('saved-name')
+if (savedUsername) {
     //document.getElementById('name').value=savedUsername;
     //document.getElementById('save').checkbox = true;
-//}
+}
 
-//let savedUserpasw = Cookies.get('saved-pasw');
-//if (savedUserpasw) {
+let savedUserpasw = Cookies.get('saved-pasw');
+if (savedUserpasw) {
     //document.getElementById('passw').value=savedUserpasw;
    // document.getElementById('save').checkbox = true;
-//}
+}
 
 
 
@@ -55,7 +55,7 @@ btn.addEventListener("click", handleClick);
 document.addEventListener("DOMContentLoaded", loadToDos);
 
 // 1.
- export  function handleClick() {
+  function handleClick() {
   console.log(this); //button
   const getInputValue = this.previousElementSibling.value.trim();
   console.log(getInputValue);
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", loadToDos);
 }
 
 // 2.
- export  function createToDo(text) {
+   function createToDo(text) {
     const li = document.createElement("li");
     li.innerText = text;
   
@@ -78,14 +78,14 @@ document.addEventListener("DOMContentLoaded", loadToDos);
   }
   
   // 3.
-  export   function saveToStorage(todo) {
+   function saveToStorage(todo) {
     const todos = JSON.parse(localStorage.getItem("tasks")) || [];
   
     localStorage.setItem("tasks", JSON.stringify([...todos, todo]));
   }
   
   // 4.
-   export  function loadToDos() {
+    function loadToDos() {
     const todos = JSON.parse(localStorage.getItem("tasks"));
   
     if (todos) {
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", loadToDos);
     
 })
   
-  export function dlt() {
+   function dlt() {
     
   }
   

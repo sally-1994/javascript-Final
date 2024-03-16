@@ -130,31 +130,7 @@ overlayclose.addEventListener('click', function () {
 
 
 
-form.addEventListener('submit',function (e) {
-    e.preventDefault();
-    console.log(e);
-    console.log(e.target[0].value);
-    let formDatasend = {
-        title:e.target[0].value
-        
-    }
-   console.log(formDatasend);
-   
-   
-   fetch("https://jsonplaceholder.typicode.com/posts", {
-    method: "POST",
-    body: JSON.stringify(formDatasend),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  })
-    .then((response) => response.json())
-    .then((sendedobj) => {
-      post(sendedobj)
-      
-      console.log(sendedobj);
-    });
-});
+
 
 
 

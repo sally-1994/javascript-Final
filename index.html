@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="reset.css">
 </head>
 <body>
-  <div class="nav-bar">
+  <div class="nav-bar" id="nav-bar">
     <div class="nav-container">
         <div class="brand">
             <svg width="140" height="29" viewBox="0 0 140 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -115,8 +115,8 @@
 
     </section>
 
-    <section>
-      <form action="" id="Login">
+    <section class="imgFORM">
+      <form class="FORM" action="" id="Login">
         <div>
           <input type="text" id="name" name="inputvalue"/>
           <input type="checkbox" id="save"/>
@@ -131,9 +131,13 @@
           <button>Submit</button>
         </div>
       </form>
+
+      <div class="imgdiv">
+        <img src="img/imgB.png" alt="" srcset=""> 
+      </div>
     </section>
 
-    <section style="margin-top: 100px">
+    <section class="todostyle">
       <h2>To Do List</h2>
       <div>
         <input type="text" id="todoinput" />
@@ -148,7 +152,9 @@
     
 
 
-  <script src="accordion.js"></script>    
+  <script src="accordion.js"></script>
+  <script src="slide.js"></script>
+  <script src="input.js"></script>    
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script type="module" src="script.js"></script>
   <script src="./node_modules/js-cookie/dist/js.cookie.min.js"></script>
