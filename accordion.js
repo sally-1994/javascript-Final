@@ -38,7 +38,9 @@ const postwraper = document.getElementById('postblock');
 const overlay = document.getElementById('overlay');
 const postcontent = document.getElementById('content');
 const overlayclose = document.getElementById('close');
-
+const btnadd =document.getElementById('add');
+const addoverlay = document.getElementById('addoverlay');
+const form = document.getElementById('form-addoverlay');
 function ajax(url,callback) {    
     fetch(url, {
         method: "GET",
@@ -57,7 +59,7 @@ function ajax(url,callback) {
 
 ajax('https://jsonplaceholder.typicode.com/posts',function (data) {
     data.forEach(element => {
-       console.log(element);
+       //console.log(element);
        post(element) 
     });
     
@@ -128,11 +130,8 @@ overlayclose.addEventListener('click', function () {
     
 })
 
-
-
-
-
-
-
-
-
+btnadd.addEventListener('click',function () {
+    addoverlay.classList.add('activadd');
+    document.getElementById('titlepost').value ="";
+    
+})
