@@ -204,6 +204,12 @@ img {
     right: 30px;
 }
 
+@media screen and (max-width: 786px){
+  .slider-wraper{
+    width: 50%;
+  }
+} 
+
 /*contact gverdis stili*/
 .div1{
     width: 50%;
