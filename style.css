@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); 
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 /*burgeri*/
 .sticky {
   position: fixed;
@@ -452,7 +452,7 @@ img {
 }
 
 /*filtris stili*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 
 * {
   box-sizing: border-box;
@@ -553,7 +553,8 @@ body {
 }
 
 /*registraciis forma*/
-#Rform {
+
+#form {
   width: 300px;
   margin: 20vh auto 0 auto;
   padding: 20px;
@@ -561,12 +562,12 @@ body {
   border-radius: 4px;
   font-size: 12px;
 }
-#Rform h1 {
+#form h1 {
   color: #0f2027;
   text-align: center;
 }
 
-#Rform button {
+#form button {
   padding: 10px;
   margin-top: 10px;
   width: 100%;
