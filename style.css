@@ -1,6 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+ul{
+  list-style: none;
+}
+ul li{
+  float: left;
+  position: relative;
+}
+ul li a{
+  display: block;
+  padding: 0 20px;
+  line-height: 50px;
+  background: #262626;
+  text-decoration: none;
+  color: #fff;
+}
+ul li a:hover{
+  background: #2ab1ce;
+  color: #fff;
+}
+ul li a:not(:only-child):after{
+  content: '▼';
+  padding-left: 5px;
+}
+ul li ul li {
+  min-width: 190px;
+}
+ul li ul li a{
+  padding: 15px;
+  line-height: 20px;
+}
 
 .nav-bar{
   height: 70px;
