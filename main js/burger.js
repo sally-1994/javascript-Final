@@ -13,24 +13,16 @@
     //header.classList.remove("sticky");
  // }
 //}
+const nav = document.getElementById('navBar');
+const burger = document.getElementById('burgerBar');
 
 
-$(document).ready(function() {
-  $('nav ul li a:not(:only-child)').click(function(e) {
-      $(this).siblings('.nav-dropdown').toggle();
-      e.stopPropagation();
-  });
+burger.addEventListener('click', function(){
+  nav.classList.toggle('activeNav')
+})
 
-  $('html').click(function(){
-      $('.nav-dropdown').hide();
-  })
-  $('#nav-toggle').click(function(){
-      $('nav ul').slideToggle();
-  })
-  $('#nav-toggle').on('click', function(){
-      this.classList.toggle('active');
-  });
-});
+
+
 
 //indexis forma
 const form2 = document.getElementById('Login');
